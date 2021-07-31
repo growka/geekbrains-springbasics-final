@@ -30,7 +30,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ProductDto getUserById(@PathVariable Long id) {
+    public ProductDto getProductById(@PathVariable Long id) {
         return productService.findProductById(id).orElseThrow(() -> new ResourceNotFoundException("Product with id: " + id + " doesn't exist"));
     }
 
@@ -40,10 +40,10 @@ public class ProductController {
         return productService.saveOrUpdate(product);
     }
 
-//    @DeleteMapping("/{id}")
-//    public void deleteProductById(@PathVariable Long id) {
-//        productService.deleteById(id);
-//    }
+    @DeleteMapping("/{id}")
+    public void deleteProductById(@PathVariable Long id) {
+        productService.deleteById(id);
+    }
 
     @PutMapping
     public Product updateProduct(@RequestBody Product product) {
